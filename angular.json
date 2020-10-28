@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ReqresApiTesting"
+    }
+  },
+  "defaultProject": "ReqresApiTesting",
+  "cli": {
+    "analytics": false
+  }
 }
