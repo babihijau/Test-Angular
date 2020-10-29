@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ApicallService } from './apicall.service';
-import { Users } from './users';
+import { User } from './user';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,13 @@ import { Users } from './users';
 })
 export class AppComponent {
   title = 'ReqresApiTesting';
-  users: Users[] = [];
-  tempUsers: Users[] = [];
-  user: any = {};
+  users: User[] = [];
+  tempUsers: User[] = [];
+  user: User = new User;
   searchId: string = "";
   delId: string = "";
   updateId: string = "";
-  updateUserData: Users = new Users;
+  updateUserData: User = new User;
 
 
   constructor(public http: HttpClient, private apiService: ApicallService) { }
@@ -46,6 +46,10 @@ export class AppComponent {
         console.log("bruv wat u searchin", res)
         // to simulate search (?)   
         this.users = this.users.filter(value => value.id == parseInt(res.data.id));
+      }, error => {
+        // to simulate search (?)   
+        this.users = this.users.filter(value => value.id == parseInt(this.searchId));
+        return error;
       });
     }
   }

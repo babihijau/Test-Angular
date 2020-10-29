@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Users } from './users';
-import * as Rx from "rxjs/Rx";
-import { from, Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +9,7 @@ export class ApicallService {
 
   constructor(private httpClient: HttpClient) { }
 
-  users: any = [];
+  user: User = new User;
   userId: string ="";
 
   getUsers() {
@@ -23,7 +20,7 @@ export class ApicallService {
     return this.httpClient.get(`https://reqres.in/api/users/`+ userId);
   }
 
-  createUsers(user: Users[]) {
+  createUsers(user: User) {
     return this.httpClient.post(`https://reqres.in/api/users`, user)
   }
 
@@ -31,7 +28,7 @@ export class ApicallService {
     return this.httpClient.delete(`https://reqres.in/api/users/`+ userId);
   }
 
-  updateUser(userId: string, data: Users){
+  updateUser(userId: string, data: User){
     return this.httpClient.put(`https://reqres.in/api/users`+ userId, data);
   }
 }

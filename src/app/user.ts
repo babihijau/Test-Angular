@@ -1,4 +1,4 @@
-export class Users {
+export class User {
     id:number = 0;
     email: string = "";
     first_name: string = "";
